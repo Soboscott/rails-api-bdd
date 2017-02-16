@@ -49,7 +49,9 @@ RSpec.describe ArticlesController do
 
   describe 'DELETE destroy' do
     it 'is successful and returns an empty response' do
-      expect(response.status).to eq(200)
+      delete :destroy, id: article.id
+      expect(response.status).to eq(204)
+      expect(response.body).to be_empty
     end
   end
 

@@ -14,13 +14,12 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
+    head :no_content
   end
 
-  def update
-  end
+  def update; end
 
-  def create
-  end
+  def create; end
 
   private
 
