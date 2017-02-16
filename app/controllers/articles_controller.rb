@@ -8,13 +8,19 @@ class ArticlesController < ApplicationController
     render json: @articles
   end
 
-  def show; end
+  def show
+    render json: @article
+  end
 
-  def destroy; end
+  def destroy
+    @article.destroy
+  end
 
-  def update; end
+  def update
+  end
 
-  def create; end
+  def create
+  end
 
   private
 

@@ -36,15 +36,23 @@ RSpec.describe ArticlesController do
   end
 
   describe 'GET show' do
-    skip 'is successful' do
+    before(:each) { get :show, params: { id: article.id } }
+    it 'is successful' do
+      expect(response.status).to eq(200)
     end
 
-    skip 'renders a JSON response' do
+    it 'renders a JSON response' do
+      parsed_article = JSON.parse(response.body)
+      expect(parsed_article).not_to be_empty
     end
   end
 
   describe 'DELETE destroy' do
-    skip 'is successful and returns an empty response' do
+    skip'is successful and returns an empty response' do
+      #
+      #
+      # expect(response.status).to eq(204)
+      #
     end
   end
 
