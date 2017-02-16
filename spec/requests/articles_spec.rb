@@ -52,7 +52,13 @@ RSpec.describe 'Articles API' do
   end
 
   describe 'GET /articles/:id' do
-    skip 'shows one article' do
+    it 'shows one article' do
+      get "/articles/#{article.id}"
+      expect(response).to be_succcess
+
+      article_response = JSON.parse(response.body)
+      expect(article_response['id']).to eq(article['id'])
+      expect(article_response['title']).to eq(article['title'])
     end
   end
 
