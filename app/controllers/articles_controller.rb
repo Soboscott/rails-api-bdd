@@ -17,7 +17,10 @@ class ArticlesController < ApplicationController
     head :no_content
   end
 
-  def update; end
+  def update
+    @article.update(article_params)
+    head :no_content
+  end
 
   def create; end
 

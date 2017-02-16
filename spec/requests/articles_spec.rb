@@ -80,12 +80,19 @@ RSpec.describe 'Articles API' do
       { title: 'Two Stupid Tricks' }
     end
 
-    skip 'updates an article' do
+    it 'updates an article' do
+      patch "/articles/#{article.id}", params: { article: article_diff }
+
+      expect(response).to be_success
+
+      expect(article[:title]).to eq(article_diff[:title])
     end
   end
 
   describe 'POST /articles' do
-    skip 'creates an article' do
+    it 'creates an article' do
+      def new_article
+
     end
   end
 end
