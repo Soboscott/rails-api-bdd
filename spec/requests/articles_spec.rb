@@ -75,6 +75,24 @@ RSpec.describe 'Articles API' do
     end
   end
 
+  describe 'POST /articles' do
+    def new_article
+      {
+        title: 'Rachel is sick',
+        content: 'Kids are the problem.'
+      }
+    end
+    it 'creates an article' do
+      post '/articles/', params: { article: new_article }
+
+      expect(response).to be_success
+
+      article_response = JSON.parse(response.body)
+      expect(article_response['id']).not_to be_nil
+      expect(article_response['title']).to eq(new_article[:title])
+    end
+  end
+
   describe 'PATCH /articles/:id' do
     def article_diff
       { title: 'Two Stupid Tricks' }
@@ -86,13 +104,6 @@ RSpec.describe 'Articles API' do
       expect(response).to be_success
 
       expect(article[:title]).to eq(article_diff[:title])
-    end
-  end
-
-  describe 'POST /articles' do
-    it 'creates an article' do
-      def new_article
-
     end
   end
 end
