@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :update, :destroy, :create]
+  before_action :set_article, only: [:show, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
     if @article.save
       render json: @article, status: :created
     else
